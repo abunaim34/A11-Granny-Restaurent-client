@@ -4,7 +4,7 @@ import Footer from "../Components/Footer";
 
 const Root = () => {
     return (
-        <div className="font-Raleway">
+        <div className="font-Raleway text-white">
             <div className="w-full fixed top-0 z-10">
                 <Navber />
             </div>
