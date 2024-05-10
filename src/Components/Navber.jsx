@@ -1,12 +1,15 @@
 import { Link, NavLink } from 'react-router-dom';
 import logo from '../assets/logo-light.png'
 import useAuth from '../Hooks/useAuth';
+import toast from 'react-hot-toast';
 
 const Navber = () => {
-    const { user } = useAuth()
+    const { user, logOutUser } = useAuth()
 
     const signOutUser = () => {
-        
+        logOutUser(()=> {
+            toast.success('Sign Out successfully')
+        })
     }
 
     const navLinks = <>

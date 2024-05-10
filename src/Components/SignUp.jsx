@@ -35,7 +35,7 @@ const SignUp = () => {
                     displayName: name,
                     photoURL: photoURL
                 })
-                toast.success('Update successfully')
+                toast.success('Sign Up successfully')
                 navigate('/')
                 console.log(result.user);
             })

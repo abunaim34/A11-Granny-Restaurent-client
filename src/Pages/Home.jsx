@@ -10,7 +10,6 @@ const Home = () => {
 useEffect(() => {
     axios('/topfoods.json')
     .then(data => {
-        console.log(data.data);
         setTopFoods(data.data)
     })
 }, [])
