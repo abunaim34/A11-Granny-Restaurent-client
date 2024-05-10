@@ -22,7 +22,7 @@ const SingleFood = () => {
                 <div className="pb-5">
                     <div>
                         <p>Quantity: {quantity}</p>
-                        <h2 className="block mt-2 md:text-3xl text-xl font-semibold text-white transition-colors duration-300 transform dark:text-white hover:text-gray-600 hover:underline" role="link">{name}</h2>
+                        <h2 className="block mt-2 md:text-3xl text-xl font-semibold text-white transition-colors duration-300 transform dark:text-white" role="link">{name}</h2>
                         <div className="flex justify-between">
                             <p className="mt-2 text-xl text-white dark:text-gray-400">Category: {category}</p>
                             <p className="mt-2 text-xl text-white font-sans pr-5 dark:text-gray-400">Price: {price}TK</p>

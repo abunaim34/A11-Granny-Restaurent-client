@@ -51,9 +51,9 @@ const Login = () => {
                 <div className="flex items-center justify-between mt-4">
                     <span className="w-1/5 border-b dark:border-gray-600 lg:w-1/5"></span>
 
-                    <a href="#" className="text-xs text-center text-white uppercase dark:text-gray-400 hover:underline">
+                    <p className="text-xs text-center text-white uppercase dark:text-gray-400">
                         or login with Social Media
-                    </a>
+                    </p>
 
                     <span className="w-1/5 border-b dark:border-gray-400 lg:w-1/5"></span>
                 </div>
