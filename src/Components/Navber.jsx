@@ -7,7 +7,6 @@ const Navber = () => {
         <NavLink to="/" className={({ isActive }) => isActive ? 'border p-2 rounded-sm border-white text-white font-black' : 'font-bold text-white p-2'}>Home</NavLink>
         <NavLink to="/allFoods" className={({ isActive }) => isActive ? 'border p-2 rounded-sm border-white text-white font-black' : 'font-bold text-white p-2'}>All Foods</NavLink>
         <NavLink to="/gallery" className={({ isActive }) => isActive ? 'border p-2 rounded-sm border-white text-white font-black' : 'font-bold text-white p-2'}>Gallery</NavLink>
-
     </>
     return (
         <div className="navbar bg-black md:px-20 font-serif">
