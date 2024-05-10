@@ -5,6 +5,8 @@ import AllFoods from "../Pages/AllFoods";
 import Gallery from "../Pages/Gallery";
 import ErrorPage from "../Components/ErrorPage";
 import SingleFood from "../Components/SingleFood";
+import SignUp from "../Components/SignUp";
+import Login from "../Components/Login";
 
 
 const router = createBrowserRouter([
@@ -28,6 +30,14 @@ const router = createBrowserRouter([
             {
                 path: '/gallery',
                 element: <Gallery></Gallery>,
+            },
+            {
+                path: '/register',
+                element: <SignUp></SignUp>
+            },
+            {
+                path: '/login',
+                element: <Login></Login>
             },
         ]
     },
