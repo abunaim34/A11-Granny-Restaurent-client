@@ -2,19 +2,33 @@ import useAuth from "../Hooks/useAuth";
 
 const FoodPurchase = () => {
     const { user } = useAuth()
+
+    const handleAddPurchase = (e) => {
+        e.preventDefault()
+        const form = e.target;
+        const name = form.name.value
+        const price = form.price.value
+        const buyer_name = user?.displayName
+        const buyer_email = user?.email
+        const quantity = form.quantity.value
+        const date = form.date.value
+        const purchaseItem = {name, price, buyer_name, buyer_email, quantity, date}
+      
+        console.log(purchaseItem);
+    }
     return (
         <div className=" lg:px-24 py-20 bg-black text-white">
             <div className="text-center  mx-auto mb-8 md:px-4">
                 <h2 className="text-5xl font-bold">Purchase your favorite Foods</h2>
             </div>
-            <form className="p-4">
+            <form onSubmit={handleAddPurchase} className="p-4">
                 <div className="md:flex md:gap-2 lg:gap-0 md:mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
                             <span className="label-text font-bold text-white">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="item_name" placeholder="Name" className="input input-bordered bg-gray-600 w-full" />
+                            <input type="text" name="name" placeholder="Name" className="input input-bordered bg-gray-600 w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
@@ -49,8 +63,8 @@ const FoodPurchase = () => {
                         <label className="label">
                             <span className="label-text font-bold text-white">Quantity</span>
                         </label>
-                        <label className="input-group">
-                            <input type="text" name="image" placeholder="Quantity" className="input input-bordered bg-gray-600 w-full" />
+                        <label className="input-group font-sans">
+                            <input type="text" name="quantity" placeholder="Quantity" className="input input-bordered bg-gray-600 w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
@@ -58,7 +72,7 @@ const FoodPurchase = () => {
                             <span className="label-text font-bold text-white">Image URL</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="image" placeholder="Image URL" className="input bg-gray-600 input-bordered w-full" />
+                            <input type="text" name="date" placeholder="Image URL" className="input bg-gray-600 input-bordered w-full" />
                         </label>
                     </div>
                 </div>
