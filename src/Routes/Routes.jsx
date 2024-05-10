@@ -3,12 +3,15 @@ import Root from "../Layout/Root";
 import Home from "../Pages/Home";
 import AllFoods from "../Pages/AllFoods";
 import Gallery from "../Pages/Gallery";
+import ErrorPage from "../Components/ErrorPage";
+import SingleFood from "../Components/SingleFood";
 
 
 const router = createBrowserRouter([
     {
         path: "/",
         element: <Root></Root>,
+        errorElement: <ErrorPage></ErrorPage>,
         children: [
             {
                 path: '/',
@@ -17,6 +20,10 @@ const router = createBrowserRouter([
             {
                 path: '/allFoods',
                 element: <AllFoods></AllFoods>,
+            },
+            {
+                path: '/singleFood/:name',
+                element: <SingleFood></SingleFood>,
             },
             {
                 path: '/gallery',

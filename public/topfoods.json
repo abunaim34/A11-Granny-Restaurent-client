@@ -1,0 +1,62 @@
+[
+    {
+        "name": "BBQ Ribs",
+        "image": "https://i.ibb.co/4mnxmsW/BBQ-Ribs.jpg",
+        "category": "BBQ",
+        "price": 14.99,
+        "quantity": 30,
+        "made_by": "Chef Ramirez",
+        "food_origin": "Mexico",
+        "description": "Tender strips of marinated steak served on a sizzling hot skillet with onions and bell peppers. Accompanied by warm flour tortillas, guacamole, sour cream, and salsa."
+    },
+    {
+        "name": "Crispy Chicken",
+        "image": "https://i.ibb.co/CJZ5Pb3/Honey-Garlic-Chicken-Wings.jpg",
+        "category": "Chicken",
+        "price": 9.49,
+        "quantity": 25,
+        "made_by": "Chef Johnson",
+        "food_origin": "United States",
+        "description": "Juicy chicken wings fried to perfection, tossed in a sticky honey garlic sauce, and garnished with sesame seeds and chopped green onions."
+    },
+    {
+        "name": "Margherita Pizza",
+        "image": "https://i.ibb.co/WyVygX6/Margherita-Pizza.jpg",
+        "category": "Pizza",
+        "price": 12.99,
+        "quantity": 20,
+        "made_by": "Chef Bianchi",
+        "food_origin": "Italy",
+        "description": "Al dente spaghetti pasta tossed with crispy pancetta, creamy egg and Parmesan cheese sauce, finished with cracked black pepper and fresh parsley."
+    },
+    {
+        "name": "Chicken Caesar Salad",
+        "image": "https://i.ibb.co/rk1kdZG/Chicken-Caesar-Salad.jpg",
+        "category": "Salads",
+        "price": 11.99,
+        "quantity": 18,
+        "made_by": "Chef Nguyen",
+        "food_origin": "Thailand",
+        "description": "Stir-fried rice noodles with tofu, bean sprouts, peanuts, and scrambled eggs, seasoned with a tangy tamarind sauce and garnished with lime wedges and cilantro."
+    },
+    {
+        "name": "Grilled Salmon",
+        "image": "https://i.ibb.co/3ksdXCf/Mediterranean-Grilled-Salmon.jpg",
+        "category": "Seafood",
+        "price": 16.99,
+        "quantity": 15,
+        "made_by": "Chef Dimitri",
+        "food_origin": "Mediterranean",
+        "description": "Fresh salmon fillet marinated in lemon, garlic, and herbs, grilled to perfection, and served with a side of roasted vegetables and couscous."
+    },
+    {
+        "name": "Classic Cheeseburger",
+        "image": "https://i.ibb.co/S0xKQRF/Classic-Cheeseburger.jpg",
+        "category": "Burgers",
+        "price": 8.99,
+        "quantity": 22,
+        "made_by": "Chef Smith",
+        "food_origin": "United States",
+        "description": "A juicy beef patty topped with melted cheddar cheese, lettuce, tomato, onion, pickles, and special sauce, served on a toasted brioche bun with a side of crispy fries."
+    }
+]
