@@ -1,4 +1,5 @@
 import { Link } from "react-router-dom";
+import PropTypes from 'prop-types'
 
 const TopFoods = ({ food }) => {
     const { name, image, category, price } = food || {}
@@ -31,5 +32,9 @@ const TopFoods = ({ food }) => {
         </div>
     );
 };
+
+TopFoods.propTypes = {
+    food: PropTypes.object
+}
 
 export default TopFoods;

@@ -5,7 +5,7 @@
         "category": "BBQ",
         "price": 14.99,
         "quantity": 30,
-        "made_by": "Chef Ramirez",
+        "made_by": "Farhan Adnan",
         "food_origin": "Mexico",
         "description": "Tender strips of marinated steak served on a sizzling hot skillet with onions and bell peppers. Accompanied by warm flour tortillas, guacamole, sour cream, and salsa."
     },
@@ -15,7 +15,7 @@
         "category": "Chicken",
         "price": 9.49,
         "quantity": 25,
-        "made_by": "Chef Johnson",
+        "made_by": "Abu Naim",
         "food_origin": "United States",
         "description": "Juicy chicken wings fried to perfection, tossed in a sticky honey garlic sauce, and garnished with sesame seeds and chopped green onions."
     },
@@ -25,7 +25,7 @@
         "category": "Pizza",
         "price": 12.99,
         "quantity": 20,
-        "made_by": "Chef Bianchi",
+        "made_by": "Farhan Adnan Farabi",
         "food_origin": "Italy",
         "description": "Al dente spaghetti pasta tossed with crispy pancetta, creamy egg and Parmesan cheese sauce, finished with cracked black pepper and fresh parsley."
     },
@@ -35,7 +35,7 @@
         "category": "Salads",
         "price": 11.99,
         "quantity": 18,
-        "made_by": "Chef Nguyen",
+        "made_by": "Tahmidul Islam",
         "food_origin": "Thailand",
         "description": "Stir-fried rice noodles with tofu, bean sprouts, peanuts, and scrambled eggs, seasoned with a tangy tamarind sauce and garnished with lime wedges and cilantro."
     },
@@ -45,8 +45,8 @@
         "category": "Seafood",
         "price": 16.99,
         "quantity": 15,
-        "made_by": "Chef Dimitri",
-        "food_origin": "Mediterranean",
+        "made_by": "Izhar Islam",
+        "food_origin": "Bangladesh",
         "description": "Fresh salmon fillet marinated in lemon, garlic, and herbs, grilled to perfection, and served with a side of roasted vegetables and couscous."
     },
     {
@@ -55,7 +55,7 @@
         "category": "Burgers",
         "price": 8.99,
         "quantity": 22,
-        "made_by": "Chef Smith",
+        "made_by": "Iftekhar Islam",
         "food_origin": "United States",
         "description": "A juicy beef patty topped with melted cheddar cheese, lettuce, tomato, onion, pickles, and special sauce, served on a toasted brioche bun with a side of crispy fries."
     }
