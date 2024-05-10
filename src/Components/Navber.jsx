@@ -5,6 +5,10 @@ import useAuth from '../Hooks/useAuth';
 const Navber = () => {
     const { user } = useAuth()
 
+    const signOutUser = () => {
+        
+    }
+
     const navLinks = <>
         <NavLink to="/" className={({ isActive }) => isActive ? 'border p-2 rounded-sm border-white text-white font-black' : 'font-bold text-white p-2'}>Home</NavLink>
         <NavLink to="/allFoods" className={({ isActive }) => isActive ? 'border p-2 rounded-sm border-white text-white font-black' : 'font-bold text-white p-2'}>All Foods</NavLink>
@@ -41,7 +45,7 @@ const Navber = () => {
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/myAddedFood' >My added food items</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/addAFood'>Add a food item</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/MyOrderedFood'>My ordered food items</Link></li>
-                            <li className='hover:bg-gray-500 rounded-full'><a>Sign Out</a></li>
+                            <li className='hover:bg-gray-500 rounded-full' onClick={signOutUser}><a>Sign Out</a></li>
                         </ul>
                     </div> :
                         <div className='flex gap-3'>
