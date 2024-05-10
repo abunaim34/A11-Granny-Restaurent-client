@@ -3,10 +3,10 @@ import { Link } from "react-router-dom";
 const Banner = () => {
     return (
 
-        <div className="w-full pt-16 bg-center bg-cover h-[500px] text-white" style={{ backgroundImage: 'url(https://i.ibb.co/XZPZgfv/2.jpg)' }}>
+        <div className="w-full bg-center bg-cover h-[500px] text-white" style={{ backgroundImage: 'url(https://i.ibb.co/XZPZgfv/2.jpg)' }}>
             <div className="flex items-center justify-center w-full h-full bg-gray-900/40">
-                <div className="text-center md:space-y-4 space-y-3">
-                    <h3 className="text-xl md:text-3xl italic font-semibold md:font-medium">Hello, We are <span className="text-blue-400">Granny</span></h3>
+                <div className="text-center md:space-y-3 space-y-2">
+                    <h3 className="text-xl md:text-3xl italic md:font-semibold font-medium">Hello, We are <span className="text-blue-400 md:font-bold">Granny Resturant</span></h3>
                     <h1 className="md:text-5xl text-3xl italic md:font-black font-bold text-white lg:text-4xl">We Serve Quality Food</h1>
                     <p className="md:w-[550px]">Granny is a resturant, bar and coffee raostery located on Egypt. We have awesome recipes and the most talented chefs in town</p>
                     <Link to='/allFoods' className="relative inline-flex items-center justify-start px-6 py-3 overflow-hidden font-medium transition-all bg-[#c59d5f] rounded hover:bg-[#c59d5f] group">
