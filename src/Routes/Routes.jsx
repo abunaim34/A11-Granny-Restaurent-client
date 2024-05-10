@@ -7,6 +7,7 @@ import ErrorPage from "../Components/ErrorPage";
 import SingleFood from "../Components/SingleFood";
 import SignUp from "../Components/SignUp";
 import Login from "../Components/Login";
+import FoodPurchase from "../Components/FoodPurchase";
 
 
 const router = createBrowserRouter([
@@ -26,6 +27,10 @@ const router = createBrowserRouter([
             {
                 path: '/singleFood/:name',
                 element: <SingleFood></SingleFood>,
+            },
+            {
+                path: '/purchase',
+                element: <FoodPurchase></FoodPurchase>,
             },
             {
                 path: '/gallery',
