@@ -1,3 +1,4 @@
+import PropTypes from 'prop-types'
 
 const GalleryCart = ({gallery}) => {
     const {image} = gallery || {}
@@ -11,5 +12,9 @@ const GalleryCart = ({gallery}) => {
         </div>
     );
 };
+
+GalleryCart.propTypes = {
+    gallery: PropTypes.object
+}
 
 export default GalleryCart;
