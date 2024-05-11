@@ -11,7 +11,7 @@ const Footer = () => {
                                     <img className="w-auto h-10" src={logo} alt="" />
                                 </div>
 
-                                <p className="max-w-sm mx-auto lg:mx-0 mt-2 text-white dark:text-gray-400">Plot-6, Floor-5, Kemal Ataturk Avenue, Danmondi, Dhaka-1213.</p>
+                                <p className="max-w-sm mx-auto lg:mx-0 mt-2 text-white">Plot-6, Floor-5, Kemal Ataturk Avenue, Danmondi, Dhaka-1213.</p>
 
                                 <div className="flex mt-6 -mx-2 felx items-center justify-center lg:justify-start">
                                     <a href="#"

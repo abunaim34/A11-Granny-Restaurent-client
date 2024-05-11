@@ -8,10 +8,10 @@ const TopFoods = ({ food }) => {
             <img src={image} alt="" className="object-cover object-center w-full rounded-md h-60 dark:bg-gray-500" />
             <div className="flex flex-col justify-between pt-6 space-y-8">
                 <div className="space-y-2">
-                    <h2 className="text-xl font-semibold tracking-wide">{name}</h2>
+                    <h2 className="text-xl font-semibold tracking-wide text-white">{name}</h2>
                     <div className="flex items-center justify-between">
-                        <p className="dark:text-gray-800">Category: {category}</p>
-                        <p className="font-sans font-semibold">Price: {price}TK</p>
+                        <p className=" text-white">Category: {category}</p>
+                        <p className="font-sans font-semibold text-white ">Price: {price}TK</p>
                     </div>
                 </div>
                 <Link to={`/singleFood/${name}`} className="relative inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">

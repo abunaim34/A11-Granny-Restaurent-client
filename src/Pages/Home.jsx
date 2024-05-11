@@ -2,19 +2,29 @@ import { Link } from "react-router-dom";
 import Banner from "../Components/Banner";
 import TopFoods from "../Components/TopFoods";
 import { useEffect, useState } from "react";
-import axios from 'axios'
+import useAxios from "../Hooks/useAxios";
+import { Helmet } from "react-helmet-async";
+import { HashLoader } from "react-spinners";
 
 const Home = () => {
     const [topFoods, setTopFoods] = useState([])
+    const [loading, setLoading] = useState(false)
+    const axiosSecure = useAxios()
 
     useEffect(() => {
-        axios('/topfoods.json')
-            .then(data => {
-                setTopFoods(data.data)
-            })
-    }, [])
+        setLoading(true)
+        const getData = async() => {
+            const {data} = await axiosSecure('/foods')
+            setTopFoods(data)
+            setLoading(false)
+        }
+        getData()
+    }, [axiosSecure])
     return (
         <div className="bg-black font-serif">
+            <Helmet>
+                <title>GRANNY RESTURANT</title>
+            </Helmet>
             <div>
                 <Banner></Banner>
             </div>
@@ -25,7 +35,8 @@ const Home = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-9">
                     {
-                        topFoods?.slice(0, 6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
+                      loading ? <HashLoader color="#36d7b7" /> :
+                      topFoods?.slice(0, 6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
                     }
                 </div>
                 <div className="text-center">

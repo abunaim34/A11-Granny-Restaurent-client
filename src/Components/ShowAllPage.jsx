@@ -4,7 +4,7 @@ import PropTypes from 'prop-types'
 const ShowAllPage = ({food}) => {
     const {name, image, quantity, price, category} = food || {}
     return (
-        <div className="max-w-md relative rounded-md p-4 shadow-md text-white bg-[#1B1616] dark:text-gray-800">
+        <div className="max-w-md relative rounded-md p-4 shadow-md text-white bg-[#1B1616] ">
             <img src={image} alt="" className="object-cover object-center w-full rounded-md h-60 dark:bg-gray-500" />
             <div className="absolute bg-[#1B1616] p-1 rounded-sm top-4 right-4">
                 <h1 className="font-sans font-semibold">Price: {price}Tk</h1>
@@ -13,7 +13,7 @@ const ShowAllPage = ({food}) => {
                 <div className="space-y-2">
                     <h2 className="text-xl font-semibold tracking-wide">{name}</h2>
                     <div className="flex items-center justify-between">
-                        <p className="dark:text-gray-800">Category: {category}</p>
+                        <p className="">Category: {category}</p>
                         <p className="font-sans font-semibold">Quantity: {quantity}</p>
                     </div>
                 </div>

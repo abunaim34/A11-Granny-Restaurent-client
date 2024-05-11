@@ -7,7 +7,7 @@ const Navber = () => {
     const { user, logOutUser } = useAuth()
 
     const signOutUser = () => {
-        logOutUser(()=> {
+        logOutUser(() => {
             toast.success('Sign Out successfully')
         })
     }
@@ -47,7 +47,7 @@ const Navber = () => {
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/myAddedFoods' >My added food items</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/addAFood'>Add a food item</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/MyOrderedFood'>My ordered food items</Link></li>
-                            <li className='hover:bg-gray-500 rounded-full' onClick={signOutUser}><a>Sign Out</a></li>
+                            <li className='hover:bg-gray-500 rounded-full' onClick={signOutUser}><Link to='/login'>Sign Out</Link></li>
                         </ul>
                     </div> :
                         <div className='flex gap-3'>
@@ -61,8 +61,8 @@ const Navber = () => {
                             </Link>
                         </div>
                 }
-            </div>
         </div>
+        </div >
     );
 };
 

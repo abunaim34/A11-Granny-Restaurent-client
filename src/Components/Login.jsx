@@ -3,6 +3,7 @@ import logo from '../assets/logo-light.png'
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 const Login = () => {
     const {loginUser, signInwithGoogle, signInwithgithub} = useAuth()
@@ -59,6 +60,9 @@ const Login = () => {
     }
     return (
         <div className="bg-black py-8 mt-16">
+            <Helmet>
+                <title>GRANNY | SIGN IN</title>
+            </Helmet>
             <div className="w-full  font-serif max-w-md p-6 m-auto mx-auto bg-[#1B1616] rounded-2xl shadow-md dark:bg-gray-800">
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-7 sm:h-8" src={logo} alt="" />

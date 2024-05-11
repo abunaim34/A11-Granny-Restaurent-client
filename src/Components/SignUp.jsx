@@ -2,6 +2,7 @@ import { Link, useNavigate } from 'react-router-dom';
 import logo from '../assets/logo-light.png'
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
+import { Helmet } from 'react-helmet-async';
 
 const SignUp = () => {
     const { createUser, updateUser, user, setUser } = useAuth()
@@ -45,6 +46,9 @@ const SignUp = () => {
     }
     return (
         <div className="bg-black py-8 mt-16">
+            <Helmet>
+                <title>GRANNY | SIGN UP</title>
+            </Helmet>
             <div className="w-full  font-serif max-w-md p-6 m-auto mx-auto bg-[#1B1616] rounded-2xl shadow-md dark:bg-gray-800">
                 <div className="flex justify-center mx-auto">
                     <img className="w-auto h-10 sm:h-8" src={logo} alt="" />

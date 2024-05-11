@@ -1,19 +1,28 @@
 import { useEffect, useState } from "react";
 import GalleryCart from "../Components/GalleryCart";
-import axios from 'axios'
+import useAxios from "../Hooks/useAxios";
+import { Helmet } from "react-helmet-async";
+import { HashLoader } from "react-spinners";
 
 const Gallery = () => {
     const [galleries, setGalleries] = useState([])
-    console.log(galleries);
+    const [loading, setLoading] = useState(false)
+    const axiosSecure = useAxios()
 
     useEffect(() => {
-        axios('/topfoods.json')
-            .then(data => {
-                setGalleries(data.data)
-            })
-    }, [])
+        setLoading(true)
+        const getData = async() => {
+            const {data} = await axiosSecure('/foods')
+            setGalleries(data)
+            setLoading(false)
+        }
+        getData()
+    }, [axiosSecure])
     return (
         <div className="bg-black pt-16 font-serif">
+            <Helmet>
+                <title>GRANNY | GALLERY</title>
+            </Helmet>
             <div className="w-full bg-center bg-cover h-[300px] text-white" style={{ backgroundImage: 'url(https://i.ibb.co/X4n4z4B/6.jpg)' }}>
                 <div className="flex flex-col text-center space-y-2 items-center justify-center w-full h-full bg-gray-900/40">
                     <h1 className="md:text-5xl pt-3 text-2xl italic md:font-black font-bold text-white lg:text-4xl">GRANNY RESTURANT GALLERY</h1>
@@ -21,7 +30,8 @@ const Gallery = () => {
             </div>
             <div className="grid py-8 grid-cols-1 lg:grid-cols-3 md:grid-cols-2 gap-4 md:px-5 lg:px-20">
                 {
-                    galleries.map((gallery, i) => <GalleryCart key={i} gallery={gallery} />)
+                   loading ? <HashLoader color="#36d7b7" />
+                   : galleries.map((gallery, i) => <GalleryCart key={i} gallery={gallery} />)
                 }
             </div>
             <div className="text-center py-5">
