@@ -1,7 +1,13 @@
+import { useState } from "react";
 import useAuth from "../Hooks/useAuth";
+import DatePicker from "react-datepicker";
+import 'react-datepicker/dist/react-datepicker.css'
+
 
 const FoodPurchase = () => {
     const { user } = useAuth()
+    const [startDate, setStartDate] = useState(new Date());
+
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
@@ -11,9 +17,9 @@ const FoodPurchase = () => {
         const buyer_name = user?.displayName
         const buyer_email = user?.email
         const quantity = form.quantity.value
-        const date = form.date.value
-        const purchaseItem = {name, price, buyer_name, buyer_email, quantity, date}
-      
+        const date = startDate.toLocaleDateString()
+        const purchaseItem = { name, price, buyer_name, buyer_email, quantity, date }
+
         console.log(purchaseItem);
     }
     return (
@@ -63,17 +69,15 @@ const FoodPurchase = () => {
                         <label className="label">
                             <span className="label-text font-bold text-white">Quantity</span>
                         </label>
-                        <label className="input-group font-sans">
+                        <label className="input-group">
                             <input type="text" name="quantity" placeholder="Quantity" className="input input-bordered bg-gray-600 w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
                         <label className="label">
-                            <span className="label-text font-bold text-white">Image URL</span>
+                            <span className="label-text font-bold text-white">Date</span>
                         </label>
-                        <label className="input-group">
-                            <input type="text" name="date" placeholder="Image URL" className="input bg-gray-600 input-bordered w-full" />
-                        </label>
+                         <DatePicker className="bg-gray-600 p-3 rounded-md w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                 </div>
 
