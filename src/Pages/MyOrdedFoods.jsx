@@ -2,21 +2,23 @@ import { useEffect, useState } from "react";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
+import useAuth from "../Hooks/useAuth";
+
 const MyOrdedFoods = () => {
     const [foods, setFoods] = useState([])
     const [loading, setLoading] = useState(false)
-
+    const {user} = useAuth()
     const axiosSecure = useAxios()
 
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure('/foods')
+            const { data } = await axiosSecure(`/foods/${user?.email}`)
             setFoods(data)
             setLoading(false)
         }
         getData()
-    }, [axiosSecure])
+    }, [axiosSecure, user])
     return (
         <div className="bg-black py-24 pt-28">
             <Helmet>
@@ -50,7 +52,7 @@ const MyOrdedFoods = () => {
                                             <p>{food.name}</p>
                                         </td>
                                         <td className="p-3">
-                                            <p>{food.made_by}</p>
+                                            <p>{food.made_by || food.buyer_name}</p>
                                         </td>
                                         <td className="p-3 font-sans pl-8">
                                             <p>{food.category}</p>

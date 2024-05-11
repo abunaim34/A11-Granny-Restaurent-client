@@ -3,22 +3,23 @@ import { MdBrowserUpdated } from "react-icons/md";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
+import useAuth from "../Hooks/useAuth";
 
 const MyAddedFoods = () => {
     const [foods, setFoods] = useState([])
     const [loading, setLoading] = useState(false)
-
+    const {user} = useAuth()
     const axiosSecure = useAxios()
 
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure('/foods')
+            const { data } = await axiosSecure(`/foods/${user?.email}`)
             setFoods(data)
-            setLoading(true)
+            setLoading(false)
         }
         getData()
-    }, [axiosSecure])
+    }, [axiosSecure, user])
     return (
         <div className="bg-black py-24 pt-28">
             <Helmet>
@@ -49,7 +50,7 @@ const MyAddedFoods = () => {
                                             <p>{food.name}</p>
                                         </td>
                                         <td className="p-3">
-                                            <p>farhanadnanfarabi@gmail.com</p>
+                                            <p>{food.buyer_email}</p>
                                         </td>
                                         <td className="p-3">
                                             <p>{food.category}</p>
