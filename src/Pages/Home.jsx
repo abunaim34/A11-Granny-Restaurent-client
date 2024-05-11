@@ -7,12 +7,12 @@ import axios from 'axios'
 const Home = () => {
     const [topFoods, setTopFoods] = useState([])
 
-useEffect(() => {
-    axios('/topfoods.json')
-    .then(data => {
-        setTopFoods(data.data)
-    })
-}, [])
+    useEffect(() => {
+        axios('/topfoods.json')
+            .then(data => {
+                setTopFoods(data.data)
+            })
+    }, [])
     return (
         <div className="bg-black font-serif">
             <div>
@@ -25,7 +25,7 @@ useEffect(() => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-9">
                     {
-                        topFoods?.slice(0,6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
+                        topFoods?.slice(0, 6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
                     }
                 </div>
                 <div className="text-center">
