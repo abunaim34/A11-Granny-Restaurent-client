@@ -1,5 +1,7 @@
 import { Helmet } from "react-helmet-async";
 import useAuth from "../Hooks/useAuth";
+import axios from 'axios'
+import toast from "react-hot-toast";
 
 const AddAFoods = () => {
     const { user } = useAuth()
@@ -18,6 +20,16 @@ const AddAFoods = () => {
         const description = form.description.value
         const food = {name, price, buyer_name, buyer_email, food_origin, quantity, category, image, description}
         console.log(food);
+
+
+        axios.post('https://granny-resturant-server.vercel.app/foods', food)
+        .then(data => {
+            const food = data.data
+            console.log(food);
+            if(food.insertedId){
+                toast.success('Add Food successfully')
+            }
+        })
     }
 
     return (

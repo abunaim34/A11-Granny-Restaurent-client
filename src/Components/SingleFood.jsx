@@ -9,7 +9,7 @@ const SingleFood = () => {
     const [foods, setFoods] = useState([])
     const [loading, setLoading] = useState(false)
     const food = foods.find(food => food.name === name)
-    const { image, price, quantity, food_origin, description, made_by, category } = food || {}
+    const { image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
 
     const axiosSecure = useAxios()
 
@@ -44,7 +44,7 @@ const SingleFood = () => {
                                 </div>
                                 <div className="mt-4">
                                     <div className="flex justify-between">
-                                        <h2>Made By: {made_by}</h2>
+                                        <h2>Made By: {made_by || buyer_name}</h2>
                                         <p className="pr-5">Origin: {food_origin}</p>
                                     </div>
                                 </div>
