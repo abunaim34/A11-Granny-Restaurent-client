@@ -9,7 +9,7 @@ const SingleFood = () => {
     const [foods, setFoods] = useState([])
     const [loading, setLoading] = useState(false)
     const food = foods.find(food => food.name === name)
-    const { image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
+    const {_id, image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
 
     const axiosSecure = useAxios()
 
@@ -30,9 +30,11 @@ const SingleFood = () => {
                         <Helmet>
                             <title>GRANNY | {name}</title>
                         </Helmet>
-                        <div className="max-w-2xl p-3 mx-auto overflow-hidden text-white bg-[#1B1616] rounded-lg shadow-md dark:bg-gray-800">
+                        <div className="max-w-2xl relative p-3 mx-auto overflow-hidden text-white bg-[#1B1616] rounded-lg shadow-md dark:bg-gray-800">
                             <img className="object-cover rounded-xl p-2" src={image} alt="Article" />
-
+                            <div className="text-white rounded-sm absolute top-5 right-5 bg-black">
+                                <h4 className="font-medium p-1">Purchase Count : 0</h4>
+                            </div>
                             <div className="pb-5">
                                 <div>
                                     <p>Quantity: {quantity}</p>
@@ -50,7 +52,7 @@ const SingleFood = () => {
                                 </div>
                                 <p className="mt-2 border-t py-3 text-white dark:text-gray-400"><span className="font-semibold">Description:</span> {description}</p>
                             </div>
-                            <Link to={`/purchase`} className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
+                            <Link to={`/purchase/${_id}`} className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
                                 <span className="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-[#c59d5f] via-[#1B1616] to-[#c59d5f] group-hover:opacity-100"></span>
                                 {/* <!-- Top glass gradient --> */}
                                 <span className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>

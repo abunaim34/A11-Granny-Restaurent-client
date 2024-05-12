@@ -12,6 +12,7 @@ import MyAddedFoods from "../Pages/MyAddedFoods";
 import AddAFoods from "../Pages/AddAFoods";
 import MyOrdedFoods from "../Pages/MyOrdedFoods";
 import PrivateRoutes from "./PrivateRoutes";
+import UpdateFoods from "../Components/UpdateFoods";
 
 
 const router = createBrowserRouter([
@@ -33,8 +34,9 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><SingleFood></SingleFood></PrivateRoutes>,
             },
             {
-                path: '/purchase',
-                element: <FoodPurchase></FoodPurchase>,
+                path: '/purchase/:id',
+                element: <PrivateRoutes><FoodPurchase></FoodPurchase></PrivateRoutes>,
+                // loader: ({params}) => fetch(`https://granny-resturant-server.vercel.app/foods/${params.name}`)
             },
             {
                 path: '/gallery',
@@ -43,6 +45,10 @@ const router = createBrowserRouter([
             {
                 path: '/myAddedFoods',
                 element: <PrivateRoutes><MyAddedFoods></MyAddedFoods></PrivateRoutes>,
+            },
+            {
+                path: '/updateFood/:id',
+                element: <PrivateRoutes><UpdateFoods></UpdateFoods></PrivateRoutes>,
             },
             {
                 path: '/addAFood',

@@ -1,13 +1,19 @@
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import useAuth from "../Hooks/useAuth";
 import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
+import useAxios from "../Hooks/useAxios";
+import { useParams } from "react-router-dom";
+// import { useLoaderData } from "react-router-dom";
 
 
 const FoodPurchase = () => {
-    const { user } = useAuth()
     const [startDate, setStartDate] = useState(new Date());
-
+    const { user } = useAuth()
+    const axiosSecure = useAxios()
+    const {id} = useParams()
+    // const purchase = useLoaderData()
+    console.log(id);
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
@@ -22,6 +28,14 @@ const FoodPurchase = () => {
 
         console.log(purchaseItem);
     }
+
+    useEffect(() => {
+        const getData = async() => {
+            const {data} = await axiosSecure(`/foods`)
+            console.log(data);
+        }
+        getData()
+    }, [axiosSecure])
     return (
         <div className=" lg:px-24 py-20 bg-black text-white">
             <div className="text-center  mx-auto mb-8 md:px-4">

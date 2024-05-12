@@ -27,7 +27,7 @@ const AllFoods = () => {
             </Helmet>
             <AllPageTitle></AllPageTitle>
             <div className="py-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-20 md:px-5">
-                {loading ? <HashLoader color="#36d7b7" /> :
+                {loading ? <div className="flex items-center mx-auto justify-center"><HashLoader color="#36d7b7" /></div> :
                     foods.map((food, i) => <ShowAllPage key={i} food={food}></ShowAllPage>)}
             </div>
         </div>
