@@ -3,29 +3,31 @@ import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
 import useAuth from "../Hooks/useAuth";
+import axios from "axios";
 
 const MyOrdedFoods = () => {
     const [foods, setFoods] = useState([])
     const [loading, setLoading] = useState(false)
     const { user } = useAuth()
-    const axiosSecure = useAxios()
+    const {purchaseSecure} = useAxios()
 
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure(`/foods/${user?.email}`)
+            const { data } = await axios(`https://granny-resturant-server.vercel.app/purchase/${user?.email}`)
             setFoods(data)
             setLoading(false)
+            console.log(data);
         }
         getData()
-    }, [axiosSecure, user])
+    }, [purchaseSecure, user])
     return (
         <div className="bg-black py-24 pt-28">
             <Helmet>
                 <title>GRANNY | MY ORDERED FOOD ITEMS</title>
             </Helmet>
             <div className="text-center">
-                <h2 className="text-5xl font-bold">My Added Food Items</h2>
+                <h2 className="text-5xl font-bold">My Ordered Food Items</h2>
                 <p className="md:w-[550px] w-full mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum voluptate quis. Voluptates totam culpa .</p>
             </div>
             {

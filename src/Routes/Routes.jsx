@@ -34,9 +34,8 @@ const router = createBrowserRouter([
                 element: <PrivateRoutes><SingleFood></SingleFood></PrivateRoutes>,
             },
             {
-                path: '/purchase/:id',
+                path: '/purchase/:_id',
                 element: <PrivateRoutes><FoodPurchase></FoodPurchase></PrivateRoutes>,
-                // loader: ({params}) => fetch(`https://granny-resturant-server.vercel.app/foods/${params.name}`)
             },
             {
                 path: '/gallery',

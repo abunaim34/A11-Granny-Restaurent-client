@@ -11,14 +11,14 @@ const AddAFoods = () => {
         const form = e.target
         const name = form.name.value
         const price = form.price.value
-        const buyer_name = user?.displayName
-        const buyer_email = user?.email
+        const made_by = user?.displayName
+        const email = user?.email
         const quantity = form.quantity.value
         const food_origin = form.food_origin.value
         const category = form.category.value
         const image = form.image.value
         const description = form.description.value
-        const food = {name, price, buyer_name, buyer_email, food_origin, quantity, category, image, description}
+        const food = {name, price, made_by, email, food_origin, quantity, category, image, description}
         console.log(food);
 
 
@@ -28,6 +28,7 @@ const AddAFoods = () => {
             console.log(food);
             if(food.insertedId){
                 toast.success('Add Food successfully')
+                e.target.reset()
             }
         })
     }
@@ -63,7 +64,7 @@ const AddAFoods = () => {
                 <div className="md:flex md:gap-2 lg:gap-0 md:mb-8">
                     <div className="form-control md:w-1/2">
                         <label className="label">
-                            <span className="label-text font-bold text-white">Buyer Name</span>
+                            <span className="label-text font-bold text-white">Made By</span>
                         </label>
                         <label className="input-group">
                             <input type="text" value={user?.displayName} name="buyer_name" placeholder="Buyer Name" className="input bg-gray-600 text-white input-bordered w-full" />
@@ -71,7 +72,7 @@ const AddAFoods = () => {
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">
                         <label className="label">
-                            <span className="label-text font-bold text-white">Buyer Email</span>
+                            <span className="label-text font-bold text-white">Email</span>
                         </label>
                         <label className="input-group">
                             <input type="email" value={user?.email} name="buyer_email" placeholder="Email" className="input bg-gray-600 input-bordered text-white w-full" />

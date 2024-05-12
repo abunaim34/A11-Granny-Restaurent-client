@@ -28,7 +28,7 @@ const UpdateFoods = () => {
         console.log(food);
 
 
-        axios.put(`http://localhost:5000/updatefood/${_id}`, food)
+        axios.put(`https://granny-resturant-server.vercel.app/updatefood/${_id}`, food)
         .then(data => {
             const food = data.data
             console.log(food);

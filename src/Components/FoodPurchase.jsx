@@ -4,38 +4,47 @@ import DatePicker from "react-datepicker";
 import 'react-datepicker/dist/react-datepicker.css'
 import useAxios from "../Hooks/useAxios";
 import { useParams } from "react-router-dom";
-// import { useLoaderData } from "react-router-dom";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 
 const FoodPurchase = () => {
     const [startDate, setStartDate] = useState(new Date());
+    const [purchaseFoods, setPurchaseFoods] = useState([])
     const { user } = useAuth()
     const axiosSecure = useAxios()
-    const {id} = useParams()
-    // const purchase = useLoaderData()
-    console.log(id);
+    const { _id } = useParams()
+    const purchaseFood = purchaseFoods.find(food => food._id == _id)
+    const { image, category, food_origin, made_by } = purchaseFood || {}
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
         const form = e.target;
         const name = form.name.value
         const price = form.price.value
+        image
+        category
+        food_origin
+        made_by
         const buyer_name = user?.displayName
         const buyer_email = user?.email
         const quantity = form.quantity.value
         const date = startDate.toLocaleDateString()
-        const purchaseItem = { name, price, buyer_name, buyer_email, quantity, date }
+        const purchaseItem = { name, price, made_by, image, category, buyer_name, buyer_email, food_origin, quantity, date }
 
-        console.log(purchaseItem);
+        axios.post('https://granny-resturant-server.vercel.app/purchase', purchaseItem)
+        .then(data => {
+            toast.success('Add Food successfully', data.data)
+        })
     }
 
     useEffect(() => {
-        const getData = async() => {
-            const {data} = await axiosSecure(`/foods`)
-            console.log(data);
+        const getData = async () => {
+            const { data } = await axiosSecure(`/foods`)
+            setPurchaseFoods(data)
         }
         getData()
-    }, [axiosSecure])
+    }, [axiosSecure, _id])
     return (
         <div className=" lg:px-24 py-20 bg-black text-white">
             <div className="text-center  mx-auto mb-8 md:px-4">
@@ -91,7 +100,7 @@ const FoodPurchase = () => {
                         <label className="label">
                             <span className="label-text font-bold text-white">Date</span>
                         </label>
-                         <DatePicker className="bg-gray-600 p-3 rounded-md w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
+                        <DatePicker className="bg-gray-600 p-3 rounded-md w-full" selected={startDate} onChange={(date) => setStartDate(date)} />
                     </div>
                 </div>
 

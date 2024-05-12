@@ -4,7 +4,7 @@ import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
 import useAuth from "../Hooks/useAuth";
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 const MyAddedFoods = () => {
     const [foods, setFoods] = useState([])
@@ -18,6 +18,8 @@ const MyAddedFoods = () => {
             const { data } = await axiosSecure(`/foods/${user?.email}`)
             setFoods(data)
             setLoading(false)
+            console.log(data);
+            
         }
         getData()
     }, [axiosSecure, user])
@@ -38,7 +40,7 @@ const MyAddedFoods = () => {
                                 <thead className="bg-black">
                                     <tr className="text-left text-base font-bold">
                                         <th className="p-5">Name</th>
-                                        <th className="p-5">Buyer Email</th>
+                                        <th className="p-5">Made By</th>
                                         <th className="p-5">Category</th>
                                         <th className="p-5">Quantity</th>
                                         <th className="p-5">Price</th>
@@ -52,7 +54,7 @@ const MyAddedFoods = () => {
                                                 <p>{food.name}</p>
                                             </td>
                                             <td className="p-3">
-                                                <p>{food.buyer_email}</p>
+                                                <p>{food.made_by}</p>
                                             </td>
                                             <td className="p-3">
                                                 <p>{food.category}</p>
@@ -73,7 +75,8 @@ const MyAddedFoods = () => {
                                 </tbody>
                             </table>
                         </div>
-                    </div>}
+                    </div>
+                }
         </div>
     );
 };
