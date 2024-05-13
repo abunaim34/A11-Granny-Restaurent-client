@@ -33,7 +33,6 @@ const AllFoods = () => {
             <Helmet>
                 <title>GRANNY | ALL FOODS</title>
             </Helmet>
-            {/* <AllPageTitle handleSearch={handleSearch}></AllPageTitle> */}
             <div className="w-full bg-center bg-cover h-[300px] text-white" style={{ backgroundImage: 'url(https://i.ibb.co/X4n4z4B/6.jpg)' }}>
                 <div className="flex flex-col text-center space-y-2 items-center justify-center w-full h-full bg-gray-900/40">
                     <h1 className="md:text-5xl pt-3 text-2xl italic md:font-black font-bold text-white lg:text-4xl">GRANNY RESTURANT All FOODS</h1>
@@ -51,7 +50,7 @@ const AllFoods = () => {
             </div>
             <div className="py-10 grid gap-5 grid-cols-1 md:grid-cols-2 lg:grid-cols-3 lg:px-20 md:px-5">
                 {loading ? <div className="flex items-center mx-auto justify-center"><HashLoader color="#36d7b7" /></div> :
-                    foods.map((food, i) => <ShowAllPage key={i} food={food}></ShowAllPage>)}
+                    foods.map((food, i) => (food.quantity || food.price ) && <ShowAllPage key={i} food={food}></ShowAllPage>)}
             </div>
         </div>
     );
