@@ -3,6 +3,7 @@ import GalleryCart from "../Components/GalleryCart";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
+import logo from '../assets/logo-light.png'
 
 const Gallery = () => {
     const [galleries, setGalleries] = useState([])
@@ -50,7 +51,7 @@ const Gallery = () => {
                     <div className="modal-box bg-[#1B1616]">
                         <div className="px-6 py-4">
                             <div className="flex justify-center mx-auto">
-                                <img className="w-auto h-7 sm:h-8" src="https://merakiui.com/images/logo.svg" alt="" />
+                                <img className="w-auto h-7 sm:h-8" src={logo} alt="" />
                             </div>
                             <h3 className="mt-3 text-xl font-medium text-center dark:text-gray-200">Add Gellary</h3>
                             <form>

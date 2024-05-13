@@ -18,8 +18,6 @@ const MyAddedFoods = () => {
             const { data } = await axiosSecure(`/foods/${user?.email}`)
             setFoods(data)
             setLoading(false)
-            console.log(data);
-            
         }
         getData()
     }, [axiosSecure, user])

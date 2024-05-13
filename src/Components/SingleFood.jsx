@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
+import axios from "axios";
 
 const SingleFood = () => {
     const { name } = useParams()
     const [foods, setFoods] = useState([])
+    const [count, setCount] = useState(0)
     const [loading, setLoading] = useState(false)
     const food = foods.find(food => food.name === name)
     const {_id, image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
@@ -22,6 +24,14 @@ const SingleFood = () => {
         }
         getData()
     }, [axiosSecure])
+
+    useEffect(() => {
+        axios('https://granny-resturant-server.vercel.app/purchase')
+        .then(data => {
+            console.log(data.data);
+            setCount(data.data)
+        })
+    }, [])
     return (
         <>
             {
@@ -33,7 +43,7 @@ const SingleFood = () => {
                         <div className="max-w-2xl relative p-3 mx-auto overflow-hidden text-white bg-[#1B1616] rounded-lg shadow-md dark:bg-gray-800">
                             <img className="object-cover rounded-xl p-2" src={image} alt="Article" />
                             <div className="text-white rounded-sm absolute top-5 right-5 bg-black">
-                                <h4 className="font-medium p-1">Purchase Count : 0</h4>
+                                <h4 className="font-medium p-1">Purchase Count : {count.length}</h4>
                             </div>
                             <div className="pb-5">
                                 <div>

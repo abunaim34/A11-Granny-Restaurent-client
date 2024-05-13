@@ -6,6 +6,7 @@ import useAxios from "../Hooks/useAxios";
 import { useParams } from "react-router-dom";
 import axios from "axios";
 import toast from "react-hot-toast";
+import { Helmet } from "react-helmet-async";
 
 
 const FoodPurchase = () => {
@@ -15,10 +16,16 @@ const FoodPurchase = () => {
     const axiosSecure = useAxios()
     const { _id } = useParams()
     const purchaseFood = purchaseFoods.find(food => food._id == _id)
-    const { image, category, food_origin, made_by } = purchaseFood || {}
+    const { image, email, category, food_origin, made_by } = purchaseFood || {}
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
+        if(purchaseFoods.length <= 0){
+            return toast.error('Action not permitted!')
+        }
+        if(email === user?.email){
+            return toast.error('Action not permitted!')
+        }
         const form = e.target;
         const name = form.name.value
         const price = form.price.value
@@ -31,6 +38,8 @@ const FoodPurchase = () => {
         const quantity = form.quantity.value
         const date = startDate.toLocaleDateString()
         const purchaseItem = { name, price, made_by, image, category, buyer_name, buyer_email, food_origin, quantity, date }
+
+        e.target.reset()
 
         axios.post('https://granny-resturant-server.vercel.app/purchase', purchaseItem)
         .then(data => {
@@ -47,6 +56,9 @@ const FoodPurchase = () => {
     }, [axiosSecure, _id])
     return (
         <div className=" lg:px-24 py-20 bg-black text-white">
+            <Helmet>
+                <title>GRANNY | PURCHASE FOOD</title>
+            </Helmet>
             <div className="text-center  mx-auto mb-8 md:px-4">
                 <h2 className="text-5xl font-bold">Purchase your favorite Foods</h2>
             </div>
@@ -104,7 +116,7 @@ const FoodPurchase = () => {
                     </div>
                 </div>
 
-                <button className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
+                <button disabled={purchaseFoods.length <=0} className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
                     <span className="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-[#c59d5f] via-[#1B1616] to-[#c59d5f] group-hover:opacity-100"></span>
                     {/* <!-- Top glass gradient --> */}
                     <span className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>

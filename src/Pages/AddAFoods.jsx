@@ -21,11 +21,11 @@ const AddAFoods = () => {
         const food = {name, price, made_by, email, food_origin, quantity, category, image, description}
         console.log(food);
 
+        e.target.reset()
 
         axios.post('https://granny-resturant-server.vercel.app/foods', food)
         .then(data => {
             const food = data.data
-            console.log(food);
             if(food.insertedId){
                 toast.success('Add Food successfully')
                 e.target.reset()

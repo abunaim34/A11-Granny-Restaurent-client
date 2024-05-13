@@ -1,4 +1,4 @@
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import logo from '../assets/logo-light.png'
 import { FaGithub } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
@@ -8,6 +8,7 @@ import { Helmet } from "react-helmet-async";
 const Login = () => {
     const {loginUser, signInwithGoogle, signInwithgithub} = useAuth()
     const navigate = useNavigate()
+    const location = useLocation()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -30,7 +31,7 @@ const Login = () => {
         loginUser(email, password)
         .then(result => {
             toast.success('Login successfully', result.user)
-                navigate("/")
+            navigate(location.state || '/')
         })
         .then(error => {
             console.error(error);
@@ -41,7 +42,7 @@ const Login = () => {
         signInwithGoogle()
         .then(result => {
             toast.success('Login successfully', result.user)
-            navigate("/")
+            navigate(location.state || '/')
         })
         .catch(error => {
             console.error(error);
@@ -53,7 +54,7 @@ const Login = () => {
         signInwithgithub()
         .then(result => {
             toast.success('Login successfully', result.user)
-            navigate("/")
+            navigate(location.state || '/')
         })
         .catch(error => {
             console.error(error);
