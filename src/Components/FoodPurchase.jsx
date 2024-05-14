@@ -16,7 +16,7 @@ const FoodPurchase = () => {
     const axiosSecure = useAxios()
     const { _id } = useParams()
     const purchaseFood = purchaseFoods.find(food => food._id == _id)
-    const { image, email, category, food_origin, made_by } = purchaseFood || {}
+    const { image, name, email, category, food_origin, made_by } = purchaseFood || {}
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
@@ -27,7 +27,7 @@ const FoodPurchase = () => {
             return toast.error('Action not permitted!')
         }
         const form = e.target;
-        const name = form.name.value
+        name
         const price = form.price.value
         image
         category
@@ -43,13 +43,13 @@ const FoodPurchase = () => {
 
         axios.post('https://granny-resturant-server.vercel.app/purchase', purchaseItem)
         .then(data => {
-            toast.success('Add Food successfully', data.data)
+            toast.success('Your food order is successful', data.data)
         })
     }
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axiosSecure(`/foods`)
+            const { data } = await axiosSecure(`/foods`, {withCredentials: true})
             setPurchaseFoods(data)
         }
         getData()
@@ -69,7 +69,7 @@ const FoodPurchase = () => {
                             <span className="label-text font-bold text-white">Name</span>
                         </label>
                         <label className="input-group">
-                            <input type="text" name="name" placeholder="Name" className="input input-bordered bg-gray-600 w-full" />
+                            <input type="text" value={name} name="name" placeholder="Name" className="input input-bordered bg-gray-600 w-full" />
                         </label>
                     </div>
                     <div className="form-control md:w-1/2 lg:ml-4">

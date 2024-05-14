@@ -3,6 +3,7 @@ import logo from '../assets/logo-light.png'
 import useAuth from '../Hooks/useAuth';
 import toast from 'react-hot-toast';
 import { Helmet } from 'react-helmet-async';
+import axios from 'axios';
 
 const SignUp = () => {
     const { createUser, updateUser, user, setUser } = useAuth()
@@ -18,7 +19,10 @@ const SignUp = () => {
 
         e.target.reset()
 
-        if (password.length < 6) {
+        if(password === '') {
+            return toast.error('Please fulfill your form')
+        }
+        else if(password.length < 6) {
             return toast.error('Password should be at least 6 characters or longer')
         }
         if (!/[A-Z]/.test(password)) {
@@ -36,6 +40,8 @@ const SignUp = () => {
                     displayName: name,
                     photoURL: photoURL
                 })
+                axios.post('http://localhost:5000/jwt', {email: result?.user?.email}, {withCredentials: true})
+                .then(data => console.log(data.data))
                 toast.success('Sign Up successfully')
                 navigate('/')
                 console.log(result.user);

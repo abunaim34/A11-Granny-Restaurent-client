@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { Link, useParams } from "react-router-dom";
+import { useNavigate, useParams } from "react-router-dom";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
@@ -8,12 +8,21 @@ import axios from "axios";
 const SingleFood = () => {
     const { name } = useParams()
     const [foods, setFoods] = useState([])
-    const [count, setCount] = useState(0)
+    const [totalCount, setTotalCount] = useState(0)
+    // const [count, setCount] = useState(0)
     const [loading, setLoading] = useState(false)
     const food = foods.find(food => food.name === name)
-    const {_id, image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
+    const { _id, image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
 
     const axiosSecure = useAxios()
+    const navigate = useNavigate()
+
+    const handlePurchase = (_id) => {
+        if (quantity <= 0) {
+          return  alert('0 theke kom')  
+        }
+        navigate(`/purchase/${_id}`)
+    }
 
     useEffect(() => {
         setLoading(true)
@@ -27,11 +36,15 @@ const SingleFood = () => {
 
     useEffect(() => {
         axios('https://granny-resturant-server.vercel.app/purchase')
-        .then(data => {
-            console.log(data.data);
-            setCount(data.data)
-        })
+            .then(data => {
+                setTotalCount(data.data)
+            })
+        // axios(`http://localhost:5000/purchase/${food.name}`)
+        //     .then(data => {
+        //         console.log(data.data);
+        //     })
     }, [])
+
     return (
         <>
             {
@@ -43,7 +56,7 @@ const SingleFood = () => {
                         <div className="max-w-2xl relative p-3 mx-auto overflow-hidden text-white bg-[#1B1616] rounded-lg shadow-md dark:bg-gray-800">
                             <img className="object-cover rounded-xl p-2" src={image} alt="Article" />
                             <div className="text-white rounded-sm absolute top-5 right-5 bg-black">
-                                <h4 className="font-medium p-1">Purchase Count : {count.length}</h4>
+                                <h4 className="font-medium p-1">Purchase Count : {totalCount.length}</h4>
                             </div>
                             <div className="pb-5">
                                 <div>
@@ -62,20 +75,22 @@ const SingleFood = () => {
                                 </div>
                                 <p className="mt-2 border-t py-3 text-white dark:text-gray-400"><span className="font-semibold">Description:</span> {description}</p>
                             </div>
-                            <Link to={`/purchase/${_id}`} className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
-                                <span className="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-[#c59d5f] via-[#1B1616] to-[#c59d5f] group-hover:opacity-100"></span>
-                                {/* <!-- Top glass gradient --> */}
-                                <span className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>
-                                {/* <!-- Bottom gradient --> */}
-                                <span className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent opacity-5"></span>
-                                {/* <!-- Left gradient --> */}
-                                <span className="absolute bottom-0 left-0 w-4 h-full bg-gradient-to-r from-white to-transparent opacity-5"></span>
-                                {/* <!-- Right gradient --> */}
-                                <span className="absolute bottom-0 right-0 w-4 h-full bg-gradient-to-l from-white to-transparent opacity-5"></span>
-                                <span className="absolute inset-0 w-full h-full border border-white rounded-md opacity-10"></span>
-                                <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-5"></span>
-                                <span className="relative">Purchase</span>
-                            </Link>
+                            {
+                                <button onClick={() => handlePurchase(_id)} className="relative w-full inline-flex items-center justify-center px-6 py-3 overflow-hidden font-bold text-white rounded-md shadow-2xl group">
+                                    <span className="absolute inset-0 w-full h-full transition duration-300 ease-out opacity-0 bg-gradient-to-br from-[#c59d5f] via-[#1B1616] to-[#c59d5f] group-hover:opacity-100"></span>
+                                    {/* <!-- Top glass gradient --> */}
+                                    <span className="absolute top-0 left-0 w-full bg-gradient-to-b from-white to-transparent opacity-5 h-1/3"></span>
+                                    {/* <!-- Bottom gradient --> */}
+                                    <span className="absolute bottom-0 left-0 w-full h-1/3 bg-gradient-to-t from-white to-transparent opacity-5"></span>
+                                    {/* <!-- Left gradient --> */}
+                                    <span className="absolute bottom-0 left-0 w-4 h-full bg-gradient-to-r from-white to-transparent opacity-5"></span>
+                                    {/* <!-- Right gradient --> */}
+                                    <span className="absolute bottom-0 right-0 w-4 h-full bg-gradient-to-l from-white to-transparent opacity-5"></span>
+                                    <span className="absolute inset-0 w-full h-full border border-white rounded-md opacity-10"></span>
+                                    <span className="absolute w-0 h-0 transition-all duration-300 ease-out bg-white rounded-full group-hover:w-56 group-hover:h-56 opacity-5"></span>
+                                    <span className="relative">Purchase</span>
+                                </button>
+                            }
                         </div>
                     </div>
 

@@ -10,3 +10,11 @@
 3. 
 4. 
 5. 
+
+### Categories 
+1. BBQ
+2. Chicken
+3. Pizza
+4. Salads
+5. Seafood
+6. Burgers

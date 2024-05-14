@@ -15,7 +15,7 @@ const MyAddedFoods = () => {
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure(`/foods/${user?.email}`)
+            const { data } = await axiosSecure(`/foods/${user?.email}`, {withCredentials: true})
             setFoods(data)
             setLoading(false)
         }
@@ -47,7 +47,7 @@ const MyAddedFoods = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        foods?.map((food, i) => <tr key={i} className="border-y border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+                                        foods?.map((food, i) => (food.quantity || food.price ) &&  <tr key={i} className="border-y border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                                             <td className="p-4">
                                                 <p>{food.name}</p>
                                             </td>
@@ -57,7 +57,7 @@ const MyAddedFoods = () => {
                                             <td className="p-3">
                                                 <p>{food.category}</p>
                                             </td>
-                                            <td className="p-3 font-sans">
+                                            <td className="p-3 font-sans pl-10">
                                                 <p>{food.quantity}</p>
                                             </td>
                                             <td className="p-3 font-sans">

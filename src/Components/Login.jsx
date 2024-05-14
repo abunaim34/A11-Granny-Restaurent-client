@@ -4,9 +4,10 @@ import { FaGithub } from "react-icons/fa";
 import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
+import axios from 'axios'
 
 const Login = () => {
-    const {loginUser, signInwithGoogle, signInwithgithub} = useAuth()
+    const { loginUser, signInwithGoogle, signInwithgithub } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
 
@@ -18,10 +19,13 @@ const Login = () => {
 
         e.target.reset()
 
-        if (password.length < 6) {
+        if (password === '') {
+            return toast.error('Please fulfill your form')
+        }
+        else if (password.length < 6) {
             return toast.error('Password should be at least 6 characters or longer')
         }
-        if (!/[A-Z]/.test(password)) {
+        else if (!/[A-Z]/.test(password)) {
             return toast.error('Your password should have at least one Uppercase characters')
         }
         else if (!/[a-z]/.test(password)) {
@@ -29,36 +33,42 @@ const Login = () => {
         }
 
         loginUser(email, password)
-        .then(result => {
-            toast.success('Login successfully', result.user)
-            navigate(location.state || '/')
-        })
-        .then(error => {
-            console.error(error);
-        })
+            .then(result => {
+                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                    .then(data => console.log(data.data))
+                toast.success('Login successfully', result.user)
+                navigate(location.state || '/')
+            })
+            .then(error => {
+                console.error(error);
+            })
     }
 
     const handleGoogleLogin = () => {
         signInwithGoogle()
-        .then(result => {
-            toast.success('Login successfully', result.user)
-            navigate(location.state || '/')
-        })
-        .catch(error => {
-            console.error(error);
-            toast.error('Invalid Password/Email', error)
-        })
+            .then(result => {
+                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                    .then(data => console.log(data.data))
+                toast.success('Login successfully', result.user)
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                console.error(error);
+                toast.error('Invalid Password/Email', error)
+            })
     }
 
     const handleGithubLogin = () => {
         signInwithgithub()
-        .then(result => {
-            toast.success('Login successfully', result.user)
-            navigate(location.state || '/')
-        })
-        .catch(error => {
-            console.error(error);
-        })
+            .then(result => {
+                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                    .then(data => console.log(data.data))
+                toast.success('Login successfully', result.user)
+                navigate(location.state || '/')
+            })
+            .catch(error => {
+                console.error(error);
+            })
     }
     return (
         <div className="bg-black py-8 mt-16">
@@ -146,7 +156,7 @@ const Login = () => {
                     </button>
                 </div>
 
-                <p className="mt-8 text-xs font-light text-center text-white"> Dont have an account? <Link to='/login' className="font-bold text-blue-700 dark:text-gray-200 hover:underline">Create One</Link></p>
+                <p className="mt-8 text-xs font-light text-center text-white"> Dont have an account? <Link to='/register' className="font-bold text-blue-700 dark:text-gray-200 hover:underline">Create One</Link></p>
             </div>
         </div>
     );

@@ -25,10 +25,8 @@ const UpdateFoods = () => {
         const image = form.image.value
         const description = form.description.value
         const food = {name, price,  buyer_name, buyer_email, food_origin, quantity, category, image, description}
-        console.log(food);
 
-
-        axios.put(`https://granny-resturant-server.vercel.app/updatefood/${_id}`, food)
+        axios.put(`https://granny-resturant-server.vercel.app/updatefood/${_id}`, food, {withCredentials: true})
         .then(data => {
             const food = data.data
             console.log(food);
