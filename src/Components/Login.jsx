@@ -34,7 +34,7 @@ const Login = () => {
 
         loginUser(email, password)
             .then(result => {
-                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
                     .then(data => console.log(data.data))
                 toast.success('Login successfully', result.user)
                 navigate(location.state || '/')
@@ -47,7 +47,7 @@ const Login = () => {
     const handleGoogleLogin = () => {
         signInwithGoogle()
             .then(result => {
-                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
                     .then(data => console.log(data.data))
                 toast.success('Login successfully', result.user)
                 navigate(location.state || '/')
@@ -61,7 +61,7 @@ const Login = () => {
     const handleGithubLogin = () => {
         signInwithgithub()
             .then(result => {
-                axios.post('http://localhost:5000/jwt', { email: result?.user?.email }, { withCredentials: true })
+                axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
                     .then(data => console.log(data.data))
                 toast.success('Login successfully', result.user)
                 navigate(location.state || '/')

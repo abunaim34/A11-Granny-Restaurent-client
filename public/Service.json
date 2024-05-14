@@ -1,0 +1,38 @@
+[
+    {
+        "id": 1,
+        "title": "Daily Fresh Menus",
+        "description": "Granny help you treat yourself with a different meal everyday, thanks to our daily changing menus and our awesome creative chefs!",
+        "image": "https://i.ibb.co/QmcqNZy/granny-icontext1.png"
+    },
+    {
+        "id": 2,
+        "title": "Fresh Ingredient",
+        "description": "Who said healthy food can't also be delicious? Granny creative chefs use fresh and seasonal ingredients to make affordable.",
+        "image": "https://i.ibb.co/P4fBwfd/2.png"
+    },
+    {
+        "id": 3,
+        "title": "Tasty Meals",
+        "description": "Granny help you treat yourself with a different meal everyday, thanks to our daily changing menus and our awesome creative chefs!",
+        "image": "https://i.ibb.co/0MsBKw4/3.png"
+    },
+    {
+        "id": 4,
+        "title": "Creative Chef",
+        "description": "Experience culinary imagination at its finest. Our chefs blend flavors, textures, and colors to create edible masterpieces that ignite the senses.",
+        "image": "https://i.ibb.co/5nthvwk/4.png"
+    },
+    {
+        "id": 5,
+        "title": "Real Pizza",
+        "description": "A mouthwatering combination of savory toppings on a bed of delicious tomato basil sauce, topped with melted mozzarella cheese.",
+        "image": "https://i.ibb.co/FYBK6hP/5.png"
+    },
+    {
+        "id": 6,
+        "title": "Awesome Coffee",
+        "description": "A classic Italian coffee made with espresso, steamed milk, and frothed milk foam. Indulge in the velvety smoothness of steamed milk balanced.",
+        "image": "https://i.ibb.co/YQPqPqP/6.png"
+    }
+]

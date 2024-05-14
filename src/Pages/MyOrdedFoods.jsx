@@ -43,8 +43,8 @@ const MyOrdedFoods = () => {
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            // const { data } = await axios(`https://granny-resturant-server.vercel.app/purchaseUser/${user?.email}`, {withCredentials: true})
-            const {data} = await axios(`http://localhost:5000/purchaseUser/${user?.email}`, {withCredentials: true})
+            const { data } = await axios(`https://granny-resturant-server.vercel.app/purchaseUser/${user?.email}`, {withCredentials: true})
+            // const {data} = await axios(`http://localhost:5000/purchaseUser/${user?.email}`, {withCredentials: true})
             setFoods(data)
             setLoading(false)
         }

@@ -5,6 +5,7 @@ import { useEffect, useState } from "react";
 import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
+import Service from "../Components/Service";
 
 const Home = () => {
     const [topFoods, setTopFoods] = useState([])
@@ -45,6 +46,9 @@ const Home = () => {
                         <span className="relative w-full text-left text-black transition-colors duration-300 ease-in-out group-hover:text-white italic">SEE ALL FOODS</span>
                     </Link>
                 </div>
+            </div>
+            <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:px-5 lg:px-20 text-white lg:grid-cols-3 gap-5">
+               <Service></Service>
             </div>
         </div>
     );

@@ -45,7 +45,7 @@ const AuthProvider = ({children}) => {
 
     const logOutUser = () => {
         setLoading(true)
-        axios('http://localhost:5000/logOut', {withCredentials: true})
+        axios('https://granny-resturant-server.vercel.app/logOut', {withCredentials: true})
         .then(data => console.log(data.data))
         return signOut(auth)
     }

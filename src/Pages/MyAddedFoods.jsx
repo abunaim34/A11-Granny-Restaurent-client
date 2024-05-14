@@ -15,7 +15,7 @@ const MyAddedFoods = () => {
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure(`/foods/${user?.email}`, {withCredentials: true})
+            const { data } = await axiosSecure(`/foods/${user?.email}`)
             setFoods(data)
             setLoading(false)
         }
