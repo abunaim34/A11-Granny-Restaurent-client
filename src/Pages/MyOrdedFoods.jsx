@@ -33,7 +33,6 @@ const MyOrdedFoods = () => {
                             });
                             const remaining = foods.filter(food => food._id !== _id)
                             setFoods(remaining)
-                            console.log(data.data);
                         }
                     })
             }
@@ -44,7 +43,6 @@ const MyOrdedFoods = () => {
         setLoading(true)
         const getData = async () => {
             const { data } = await axios(`https://granny-resturant-server.vercel.app/purchaseUser/${user?.email}`, {withCredentials: true})
-            // const {data} = await axios(`http://localhost:5000/purchaseUser/${user?.email}`, {withCredentials: true})
             setFoods(data)
             setLoading(false)
         }
@@ -56,8 +54,8 @@ const MyOrdedFoods = () => {
                 <title>GRANNY | MY ORDERED FOOD ITEMS</title>
             </Helmet>
             <div className="text-center">
-                <h2 className="text-5xl font-bold">My Ordered Food Items {foods.length}</h2>
-                <p className="md:w-[550px] w-full mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum voluptate quis. Voluptates totam culpa .</p>
+                <h2 className="text-5xl font-bold uppercase">My Ordered Food Items</h2>
+                <p className="md:w-[550px] pt-3 w-full mx-auto">This is the MY ORDERED FOOD ITEMS page, here you can view every food item you have purchased, and delete it if you want.</p>
             </div>
             {
                 loading ? <div className="flex items-center py-20 justify-center"><HashLoader color="#36d7b7" /></div> :

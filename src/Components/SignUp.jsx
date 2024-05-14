@@ -19,10 +19,10 @@ const SignUp = () => {
 
         e.target.reset()
 
-        if(password === '') {
+        if (password === '') {
             return toast.error('Please fulfill your form')
         }
-        else if(password.length < 6) {
+        else if (password.length < 6) {
             return toast.error('Password should be at least 6 characters or longer')
         }
         if (!/[A-Z]/.test(password)) {
@@ -40,11 +40,11 @@ const SignUp = () => {
                     displayName: name,
                     photoURL: photoURL
                 })
-                axios.post('https://granny-resturant-server.vercel.app/jwt', {email: result?.user?.email}, {withCredentials: true})
-                .then(data => console.log(data.data))
-                toast.success('Sign Up successfully')
-                navigate('/')
-                console.log(result.user);
+                axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
+                    .then(() => {
+                        toast.success('Sign Up successfully')
+                        navigate('/')
+                    })
             })
             .then(error => {
                 toast.error(error.message)

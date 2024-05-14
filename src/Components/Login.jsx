@@ -35,9 +35,11 @@ const Login = () => {
         loginUser(email, password)
             .then(result => {
                 axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
-                    .then(data => console.log(data.data))
-                toast.success('Login successfully', result.user)
-                navigate(location.state || '/')
+                    .then(() => {
+                        toast.success('Login successfully', result.user)
+                        navigate(location.state || '/')
+                    })
+
             })
             .then(error => {
                 console.error(error);
@@ -48,9 +50,10 @@ const Login = () => {
         signInwithGoogle()
             .then(result => {
                 axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
-                    .then(data => console.log(data.data))
-                toast.success('Login successfully', result.user)
-                navigate(location.state || '/')
+                    .then(() => {
+                        toast.success('Login successfully', result.user)
+                        navigate(location.state || '/')
+                    })
             })
             .catch(error => {
                 console.error(error);
@@ -62,9 +65,11 @@ const Login = () => {
         signInwithgithub()
             .then(result => {
                 axios.post('https://granny-resturant-server.vercel.app/jwt', { email: result?.user?.email }, { withCredentials: true })
-                    .then(data => console.log(data.data))
-                toast.success('Login successfully', result.user)
-                navigate(location.state || '/')
+                    .then(() => {
+                        toast.success('Login successfully', result.user)
+                        navigate(location.state || '/')
+                    })
+
             })
             .catch(error => {
                 console.error(error);

@@ -4,25 +4,31 @@ import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
 import axios from "axios";
+import toast from "react-hot-toast";
+import useAuth from "../Hooks/useAuth";
 
 const SingleFood = () => {
-    const { name } = useParams()
     const [foods, setFoods] = useState([])
     const [totalCount, setTotalCount] = useState(0)
-    // const [count, setCount] = useState(0)
+    const [quantityCount, setQuantityCount] = useState(0)
     const [loading, setLoading] = useState(false)
+    const { name } = useParams()
+    const {user} = useAuth()
     const food = foods.find(food => food.name === name)
-    const { _id, image, price, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
+    const { _id, image, price, email, quantity, food_origin, buyer_name, description, made_by, category } = food || {}
 
     const axiosSecure = useAxios()
     const navigate = useNavigate()
 
     const handlePurchase = (_id) => {
-        if (quantity <= 0) {
-          return  alert('0 theke kom')  
+        if(email === user?.email){
+            return toast.error('Action not permitted!')
+        }
+        if (quantity <= 0 || quantity <= quantityCount.length) {
+          return  toast.error('This Food is not available')  
         }
         navigate(`/purchase/${_id}`)
-    }
+    } 
 
     useEffect(() => {
         setLoading(true)
@@ -39,11 +45,11 @@ const SingleFood = () => {
             .then(data => {
                 setTotalCount(data.data)
             })
-        // axios(`http://localhost:5000/purchase/${food.name}`)
-        //     .then(data => {
-        //         console.log(data.data);
-        //     })
-    }, [])
+        axios(`https://granny-resturant-server.vercel.app/purchase/${category}`)
+            .then(data => {
+                setQuantityCount(data.data);
+            })
+    }, [category])
 
     return (
         <>

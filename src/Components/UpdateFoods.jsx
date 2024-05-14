@@ -29,7 +29,6 @@ const UpdateFoods = () => {
         axios.put(`https://granny-resturant-server.vercel.app/updatefood/${_id}`, food, {withCredentials: true})
         .then(data => {
             const food = data.data
-            console.log(food);
             if(food.modifiedCount > 0){
                 toast.success('Update Food successfully')
             }
@@ -49,8 +48,8 @@ const UpdateFoods = () => {
                 <title>GRANNY | UPDATE FOOD ITEMS</title>
             </Helmet>
             <div className="text-center  mx-auto mb-8 md:px-4">
-                <h2 className="text-3xl pb-3 font-bold">Update A Food Item</h2>
-                <p className="w-[650px] mx-auto">This is the Add Art & Craft Items page here if you want you can add my categories based on the categories fixed by us as per your choice So lets go and add your Craft Items.</p>
+                <h2 className="text-3xl pb-3 font-bold uppercase">Update A Food Item</h2>
+                <p className="w-[650px] mx-auto">This is the UPDATE A FOOD ITEM page, here you can update the options for each food item you have added</p>
             </div>
             <form onSubmit={handleUpdateFoodItem} className="p-4">
                 <div className="md:flex md:gap-2 lg:gap-0 md:mb-8">

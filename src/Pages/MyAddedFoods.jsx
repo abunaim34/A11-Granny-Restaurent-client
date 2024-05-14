@@ -27,8 +27,8 @@ const MyAddedFoods = () => {
                 <title>GRANNY | ADD A FOOD ITEMS</title>
             </Helmet>
             <div className="text-center">
-                <h2 className="text-5xl font-bold">My Added Food Items</h2>
-                <p className="w-[550px] mx-auto">Lorem ipsum dolor sit amet consectetur adipisicing elit. Magnam illum voluptate quis. Voluptates totam culpa .</p>
+                <h2 className="md:text-5xl text-3xl font-bold uppercase">My Added Food Items</h2>
+                <p className="md:-[550px] pt-3 md:mx-auto">This is the My Added Food Items page, here you can see each food you have added as a table</p>
             </div>
             {
                 loading ? <div className="flex items-center py-20 justify-center"><HashLoader color="#36d7b7" /></div> :
@@ -47,7 +47,7 @@ const MyAddedFoods = () => {
                                 </thead>
                                 <tbody>
                                     {
-                                        foods?.map((food, i) => (food.quantity || food.price ) &&  <tr key={i} className="border-y border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
+                                        foods?.map((food, i) => (food.quantity || food.price) && <tr key={i} className="border-y border-opacity-20 dark:border-gray-300 dark:bg-gray-50">
                                             <td className="p-4">
                                                 <p>{food.name}</p>
                                             </td>
@@ -74,7 +74,7 @@ const MyAddedFoods = () => {
                             </table>
                         </div>
                     </div>
-                }
+            }
         </div>
     );
 };

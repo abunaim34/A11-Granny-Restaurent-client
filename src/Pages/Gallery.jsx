@@ -23,8 +23,9 @@ const Gallery = () => {
         const image = form.image.value
         const email = user?.email
         const description = form.description.value
+        if(image === "" || description === "") return toast.error('Please fulfill this Form')
         const addGallery = { name, image, description, email }
-        console.log(addGallery);
+
         axios.post('https://granny-resturant-server.vercel.app/foods', addGallery)
             .then(data => {
                 const food = data.data
@@ -41,7 +42,6 @@ const Gallery = () => {
             const { data } = await axiosSecure(`/foods/${user?.email}`)
             setGalleries(data)
             setLoading(false)
-            console.log(data);
         }
         getData()
     }, [axiosSecure, user])

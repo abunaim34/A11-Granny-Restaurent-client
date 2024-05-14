@@ -17,7 +17,7 @@ const Home = () => {
     useEffect(() => {
         setLoading(true)
         const getData = async () => {
-            const { data } = await axiosSecure('/foods')
+            const { data } = await axiosSecure(`/purchase`)
             setTopFoods(data)
             setLoading(false)
         }
@@ -33,8 +33,8 @@ const Home = () => {
             </div>
             <div className="py-12 lg:px-20 md:px-5">
                 <div className="text-center space-y-4">
-                    <h2 className="text-4xl font-semibold">Top Foods section</h2>
-                    <p className="md:w-[630px] mx-auto">Granny is a resturant, bar and coffee raostery located on Egypt. We have awesome recipes and the most talented chefs in town</p>
+                    <h2 className="text-4xl font-semibold uppercase">Top Foods</h2>
+                    <p className="md:w-[630px] mx-auto">This is our Top Foods section Here are some of our best selling foods cards, you can view them if you want and click the SEE ALL FOODS button to see all our other foods.</p>
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-9">
                     {
@@ -54,10 +54,10 @@ const Home = () => {
             </div>
             <div className="md:px-5 lg:px-20">
                 <div className="text-center italic">
-                    <h3 className="text-xl text-[#c59d5f] ">People talk</h3>
-                    <h1 className="text-4xl font-bold">Our Guestbook</h1>
+                    <h3 className="text-xl text-[#c59d5f] uppercase">People talk</h3>
+                    <h1 className="text-4xl font-bold uppercase">Our Guestbook</h1>
                 </div>
-                <div className=" py-10 ">
+                <div className=" py-10 pb-16 ">
                    <GuestBook />
                 </div>
             </div>

@@ -19,7 +19,6 @@ const AddAFoods = () => {
         const image = form.image.value
         const description = form.description.value
         const food = {name, price, made_by, email, food_origin, quantity, category, image, description}
-        console.log(food);
 
         e.target.reset()
 
@@ -39,8 +38,8 @@ const AddAFoods = () => {
                 <title>GRANNY | ADD A FOOD ITEMS</title>
             </Helmet>
             <div className="text-center  mx-auto mb-8 md:px-4">
-            <h2 className="text-3xl pb-3 font-bold">Add A Food Item</h2>
-            <p className="w-[650px] mx-auto">This is the Add Art & Craft Items page here if you want you can add my categories based on the categories fixed by us as per your choice So lets go and add your Craft Items.</p>
+            <h2 className="text-3xl pb-3 font-bold uppercase">Add A Food Item</h2>
+            <p className="md:w-[650px] md:mx-auto">This is the Add a Food Item page, if you want to add any food of your choice, fill the form below completely and click the Add Food button to add it.</p>
             </div>
             <form onSubmit={handleAddFoodItem} className="p-4">
                 <div className="md:flex md:gap-2 lg:gap-0 md:mb-8">
