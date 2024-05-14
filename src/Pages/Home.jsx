@@ -6,6 +6,8 @@ import useAxios from "../Hooks/useAxios";
 import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
 import Service from "../Components/Service";
+import GuestBook from "../Components/GuestBook";
+
 
 const Home = () => {
     const [topFoods, setTopFoods] = useState([])
@@ -14,8 +16,8 @@ const Home = () => {
 
     useEffect(() => {
         setLoading(true)
-        const getData = async() => {
-            const {data} = await axiosSecure('/foods')
+        const getData = async () => {
+            const { data } = await axiosSecure('/foods')
             setTopFoods(data)
             setLoading(false)
         }
@@ -36,8 +38,8 @@ const Home = () => {
                 </div>
                 <div className="grid grid-cols-1 md:grid-cols-2 gap-5 lg:grid-cols-3 my-9">
                     {
-                      loading ? <HashLoader color="#36d7b7" /> :
-                      topFoods?.slice(0, 6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
+                        loading ? <HashLoader color="#36d7b7" /> :
+                            topFoods?.slice(0, 6).map((food, i) => <TopFoods key={i} food={food}></TopFoods>)
                     }
                 </div>
                 <div className="text-center">
@@ -48,7 +50,16 @@ const Home = () => {
                 </div>
             </div>
             <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:px-5 lg:px-20 text-white lg:grid-cols-3 gap-5">
-               <Service></Service>
+                <Service></Service>
+            </div>
+            <div className="md:px-5 lg:px-20">
+                <div className="text-center italic">
+                    <h3 className="text-xl text-[#c59d5f] ">People talk</h3>
+                    <h1 className="text-4xl font-bold">Our Guestbook</h1>
+                </div>
+                <div className=" py-10 ">
+                   <GuestBook />
+                </div>
             </div>
         </div>
     );
