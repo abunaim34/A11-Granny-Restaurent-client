@@ -23,9 +23,9 @@ const Chefs = () => {
                             <ul tabIndex={0} className=" dropdown-content z-[1] lg:text-center absolute top-0 menu p-2 shadow bg-black  bg-opacity-70 h-full rounded- w-full">
                                 <div className='absolute space-y-3 bottom-3'>
                                     <div className='flex text-[#C59D5F] text-lg gap-5 justify-center items-center'>
-                                        <FaFacebookF />
-                                        <FaTwitter />
-                                        <FaInstagram />
+                                        <a href=""><FaFacebookF /></a>
+                                        <a href=""><FaTwitter /></a>
+                                        <a href=""><FaInstagram /></a>
                                     </div>
                                     <p className='text-gray-400'>{chef.description}</p>
                                 </div>
