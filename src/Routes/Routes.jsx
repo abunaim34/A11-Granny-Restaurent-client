@@ -13,6 +13,8 @@ import AddAFoods from "../Pages/AddAFoods";
 import MyOrdedFoods from "../Pages/MyOrdedFoods";
 import PrivateRoutes from "./PrivateRoutes";
 import UpdateFoods from "../Components/UpdateFoods";
+import Dashboard from "../Components/Dashboard";
+import Users from "../Pages/Dashboard/Users";
 
 
 const router = createBrowserRouter([
@@ -67,6 +69,16 @@ const router = createBrowserRouter([
             },
         ]
     },
+    {
+        path: '/dashboard',
+        element: <Dashboard />,
+        children: [
+            {
+                path: 'users',
+                element: <Users></Users>
+            },
+        ]
+    }
 ]);
 
 export default router;

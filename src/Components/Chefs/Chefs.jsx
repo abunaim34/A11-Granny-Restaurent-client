@@ -9,7 +9,6 @@ const Chefs = () => {
     useEffect(() => {
         axios('/Chefs.json')
             .then(res => {
-                console.log(res.data);
                 setChefs(res.data)
             })
     })

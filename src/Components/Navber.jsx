@@ -44,7 +44,7 @@ const Navber = () => {
                             </div>
                         </div>
                         <ul tabIndex={0} className="mt-3 z-10 p-2 shadow menu menu-sm dropdown-content bg-black rounded-box w-52">
-                            <li className='hover:bg-gray-500 rounded-full'><Link to='/dashboard' >Dashoard</Link></li>
+                            <li className='hover:bg-gray-500 rounded-full'><Link to='/dashboard/users' >Dashoard</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/myAddedFoods' >My added food items</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/addAFood'>Add a food item</Link></li>
                             <li className='hover:bg-gray-500 rounded-full'><Link to='/MyOrderedFood'>My ordered food items</Link></li>
