@@ -5,11 +5,13 @@ import useAuth from "../Hooks/useAuth";
 import toast from "react-hot-toast";
 import { Helmet } from "react-helmet-async";
 import axios from 'axios'
+import useAxios from "../Hooks/useAxios";
 
 const Login = () => {
     const { loginUser, signInwithGoogle, signInwithgithub } = useAuth()
     const navigate = useNavigate()
     const location = useLocation()
+    const axiosSecure = useAxios()
 
     const handleLogin = e => {
         e.preventDefault()
@@ -68,6 +70,15 @@ const Login = () => {
                     .then(() => {
                         toast.success('Login successfully', result.user)
                         navigate(location.state || '/')
+                        // const userInfo = {
+                        //     email: result.user?.email,
+                        //     name: result.user?.displayName
+                        // }
+                        // axiosSecure.post('/users', userInfo)
+                        // .then(res =>{
+                        //     console.log(res.data);
+                        //     navigate('/');
+                        // })
                     })
 
             })

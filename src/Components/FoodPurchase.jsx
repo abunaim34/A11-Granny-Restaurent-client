@@ -21,10 +21,10 @@ const FoodPurchase = () => {
 
     const handleAddPurchase = (e) => {
         e.preventDefault()
-        if(purchaseFoods.length <= 0){
+        if (purchaseFoods.length <= 0) {
             return toast.error('Action not permitted!')
         }
-        if(email === user?.email){
+        if (email === user?.email) {
             return toast.error('Action not permitted!')
         }
         const form = e.target;
@@ -37,13 +37,12 @@ const FoodPurchase = () => {
         const buyer_name = user?.displayName
         const buyer_email = user?.email
         const quantity = form.quantity.value
-        if(foodQuantity <= quantityCount.length) return toast.error('Food is not available, please go back')
-        else if(quantity > foodQuantity ) return toast.error(`Please make your quantity at least ${foodQuantity} equal to this and try again`)
+        if (foodQuantity <= quantityCount.length) return toast.error('Food is not available, please go back')
+        else if (quantity > foodQuantity) return toast.error(`Please make your quantity at least ${foodQuantity} equal to this and try again`)
         const date = startDate.toLocaleDateString()
         const purchaseItem = { name, price, made_by, image, category, buyer_name, buyer_email, food_origin, quantity, date }
 
         e.target.reset()
-
         axios.post('https://granny-resturant-server.vercel.app/purchase', purchaseItem)
         .then(data => {
             toast.success('Your food order is successful', data.data)
@@ -52,7 +51,7 @@ const FoodPurchase = () => {
 
     useEffect(() => {
         const getData = async () => {
-            const { data } = await axiosSecure(`/foods`, {withCredentials: true})
+            const { data } = await axiosSecure(`/foods`, { withCredentials: true })
             setPurchaseFoods(data)
         }
         getData()
@@ -66,8 +65,8 @@ const FoodPurchase = () => {
             <Helmet>
                 <title>GRANNY | PURCHASE FOOD</title>
             </Helmet>
-            <div className="text-center  mx-auto mb-8 md:px-4">
-                <h2 className="text-5xl font-bold">Purchase your favorite Foods</h2>
+            <div className="text-center md:px-4">
+                <h2 className="md:text-5xl text-3xl font-bold uppercase">Purchase your favorite Foods</h2>
             </div>
             <form onSubmit={handleAddPurchase} className="p-4">
                 <div className="md:flex md:gap-2 lg:gap-0 md:mb-8">

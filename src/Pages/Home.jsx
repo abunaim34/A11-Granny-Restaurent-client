@@ -7,6 +7,7 @@ import { Helmet } from "react-helmet-async";
 import { HashLoader } from "react-spinners";
 import Service from "../Components/Service";
 import GuestBook from "../Components/GuestBook";
+import Chefs from "../Components/Chefs/Chefs";
 
 
 const Home = () => {
@@ -51,6 +52,15 @@ const Home = () => {
             </div>
             <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:px-5 lg:px-20 text-white lg:grid-cols-3 gap-5">
                 <Service></Service>
+            </div>
+            <div className="md:px-5 lg:px-20">
+                <div className="text-center italic">
+                    <h3 className="text-xl text-[#c59d5f] uppercase">Ready to serve</h3>
+                    <h1 className="text-4xl font-bold uppercase">Our Talented Chefs</h1>
+                </div>
+                <div className="grid grid-cols-1 py-10 md:grid-cols-2 md:px-5 lg:px-20 text-white lg:grid-cols-4 gap-5">
+                   <Chefs />
+                </div>
             </div>
             <div className="md:px-5 lg:px-20">
                 <div className="text-center italic">
