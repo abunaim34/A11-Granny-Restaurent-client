@@ -20,12 +20,12 @@
 ##### Project Technologies: React.js, Node.js, Express.js, MongoDB, Firebase, JWT, Tailwind CSS, React hook form.
 
 ### Categories 
-1. BBQ
-2. Chicken
-3. Pizza
-4. Salads
-5. Seafood
-6. Burgers
+- BBQ
+- Chicken
+- Pizza
+- Salads
+- Seafood
+- Burgers
 
    <br>
 
