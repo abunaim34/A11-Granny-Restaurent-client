@@ -2,8 +2,7 @@
 
 # GRANNY RESTURANT
 
-#### [Live link](https://granny-resturant.web.app)
-#### [Server side](https://github.com/md-abu-naim/A11-Granny-Restaurent-server)
+## [Live Side](https://granny-resturant.web.app) : [Server Side](https://github.com/md-abu-naim/A11-Granny-Restaurent-server)
 
 ### Overview :- 
  A full-stack responsive website project - Time period: 5 days. <br>
